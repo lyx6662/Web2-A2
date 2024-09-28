@@ -12,43 +12,9 @@ router.get("/", (req, res)=>{
 			 res.send(records);
 		 }
 	})
-})
-
-
-router.get("/fundraisers-with-categories", (req, res) => {
-	connection.query("SELECT * FROM FUNDRAISER JOIN CATEGORY ON FUNDRAISER.category_id = CATEGORY.category_id", (err, records, fields) => {
-		if (err) {
-			console.error("Error while retrieving data");
-			res.status(500).send("Error retrieving fundraisers with categories");
-		} else {
-			res.send(records);
-		}
-	});
 });
 
-router.get("/categories", (req, res) => {
-	connection.query("SELECT * FROM CATEGORY", (err, records, fields) => {
-		if (err) {
-			console.error("Error while retrieving categories");
-			res.status(500).send("Error retrieving categories");
-		} else {
-			res.send(records);
-		}
-	});
-});
 
-router.get("/fundraisers-with-filtered-categories", (req, res) => {
-	// 根据特定标准查询筹款人和类别，这里假设标准为类别名称以特定字符串开头
-	const categoryFilter = "Poor Student";
-	connection.query(`SELECT * FROM FUNDRAISER JOIN CATEGORY ON FUNDRAISER.category_id = CATEGORY.category_id WHERE CATEGORY.name LIKE '${categoryFilter}%'`, (err, records, fields) => {
-		if (err) {
-			console.error("Error while retrieving filtered data");
-			res.status(500).send("Error retrieving fundraisers with filtered categories");
-		} else {
-			res.send(records);
-		}
-	});
-});
 
 router.get("/fundraiser/:id", (req, res) => {
 	const fundraiserId = req.params.id;
@@ -63,5 +29,46 @@ router.get("/fundraiser/:id", (req, res) => {
 		}
 	});
 });
+
+
+router.get("/Search/:search", (req, res) => {
+    const searchParams = req.params.search;
+    const params = searchParams.split(',');
+    if (params.length === 0) {
+        return res.status(400).send("You must select at least one criterion.");
+    }
+    let query = "SELECT f.*, c.NAME AS category_name FROM FUNDRAISER f JOIN CATEGORY c ON f.CATEGORY_ID = c.CATEGORY_ID WHERE ";
+    const conditions = [];
+    if (params.includes("ORGANIZER")) {
+        const organizer = req.query.organizer;
+        if (organizer) {
+            conditions.push(`f.ORGANIZER = '${organizer}'`);
+        }
+    }
+    if (params.includes("NAME")) {
+        const categoryName = req.query.categoryName;
+        if (categoryName) {
+            conditions.push(`c.NAME = '${categoryName}'`);
+        }
+    }
+    if (params.includes("CITY")) {
+        const city = req.query.city;
+        if (city) {
+            conditions.push(`f.CITY = '${city}'`);
+        }
+    }
+    if (conditions.length!== params.length) {
+        return res.status(400).send("All selected criteria must have values provided.");
+    }
+    query += conditions.join(" AND ");
+    connection.query(query, (err, records, fields) => {
+        if (err) {
+            console.error("Error while searching data", err);
+            return res.status(500).send("Error while searching data.");
+        }
+        res.send(records);
+    });
+});
+
 
 module.exports = router;

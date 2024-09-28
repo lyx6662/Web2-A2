@@ -16,6 +16,9 @@ app.get("/",(req,res)=>{
   res.sendFile(path.join(__dirname,"index.html"));
 });
 
+app.get("/search",(req,res)=>{
+  res.sendFile(path.join(__dirname,"search.html"));
+});
 //we will add more routes here
 
 app.listen(8080,()=>{
