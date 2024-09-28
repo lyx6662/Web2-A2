@@ -5,17 +5,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundraiser Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #ddd;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #results {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Fundraiser Search</h1>
-    <label for="organizer">Organizer:</label>
-    <input type="text" id="organizer">
-    <label for="city">City:</label>
-    <input type="text" id="city">
-    <label for="name">Category Name:</label>
-    <input type="text" id="name">
-    <button id="searchButton">Search</button>
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <div style="display: flex; margin-bottom: 10px;">
+            <label for="organizer">Organizer:</label>
+            <input type="text" id="organizer">
+        </div>
+        <div style="display: flex; margin-bottom: 10px;">
+            <label for="city">City:</label>
+            <input type="text" id="city">
+        </div>
+        <div style="display: flex; margin-bottom: 10px;">
+            <label for="name">Category Name:</label>
+            <input type="text" id="name">
+        </div>
+        <div style="display: flex;">
+            <button id="searchButton">Search</button>
+            <button id="clearButton" onclick="claerChechboxes()">Clear</button>
+        </div>
+    </div>
     <div id="results"></div>
 
     <script src="search.js"></script>

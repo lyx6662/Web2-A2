@@ -1,23 +1,83 @@
-<!DOCTYPE html>  
-<html>  
-  <head>  
-      <title>Homepage</title>  
-      <script src="./index.js"></script>
-  </head>  
-  <body>  
-      <header>  
-          <h1>Homepage</h1>  
-      </header>  
-  
-      <nav>  
-          <ul>  
-              <li><a href="/">Home</a></li>  
-              <li><a href="/search">Search</a></li>  
-              <li><a href="/add_concert">Add a new concert</a></li>  
-          </ul>  
-      </nav>  
-  
-      <h1>Welcome page</h1>  
-      <div id="data"></div>
-  </body>  
+<html>
+
+<head>
+    <title>Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        nav {
+            background-color: #444;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <script src="./index.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Homepage</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/search">Search</a></li>
+            <li><a href="/fundraiser">Fundraiser</a></li>
+        </ul>
+    </nav>
+
+    <h1>Welcome page</h1>
+    <div id="data"></div>
+</body>
+
 </html>
