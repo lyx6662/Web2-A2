@@ -35,5 +35,5 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function pay() {
-    alert('功能在开发');
+    alert('Features are under development');
 }

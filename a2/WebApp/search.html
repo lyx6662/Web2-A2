@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,6 +17,17 @@
             text-align: center;
             padding: 20px 0;
             background-color: #ddd;
+        }
+
+       .search-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
         }
 
         label {
@@ -78,7 +88,7 @@
 
 <body>
     <h1>Fundraiser Search</h1>
-    <div style="display: flex; flex-direction: column; align-items: center;">
+    <div class="search-container">
         <div style="display: flex; margin-bottom: 10px;">
             <label for="organizer">Organizer:</label>
             <input type="text" id="organizer">
@@ -87,10 +97,7 @@
             <label for="city">City:</label>
             <input type="text" id="city">
         </div>
-        <div style="display: flex; margin-bottom: 10px;">
-            <label for="name">Category Name:</label>
-            <input type="text" id="name">
-        </div>
+        <div id="Radio_box"></div>
         <div style="display: flex;">
             <button id="searchButton">Search</button>
             <button id="clearButton" onclick="claerChechboxes()">Clear</button>
