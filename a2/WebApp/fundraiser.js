@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Get the ID from local storage.
     const ID = localStorage.getItem('ID');
     if (ID) {
+        // Construct the URL using the ID.
         const url = 'http://localhost:3060/api/A2people/fundraiser/' + ID;
+        // Send a request to fetch fundraiser data.
         fetch(url)
            .then(response => response.json())
            .then(data => {
@@ -9,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 dataDiv.innerHTML = "";
                 console.log(data);
                 if (data) {
+                    // Create a table to display fundraiser data.
                     const table = document.createElement('table');
                     const thead = table.createTHead();
                     const row = thead.insertRow();
@@ -26,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         td.textContent = value;
                         dataRow.appendChild(td);
                     });
+                    // Append the table to the dataDiv.
                     dataDiv.appendChild(table);
                 } else {
                     dataDiv.textContent = "No fundraiser";
@@ -35,5 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function pay() {
+    // Display an alert indicating that the feature is under development.
     alert('Features are under development');
 }
